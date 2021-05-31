@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <%- include('./partials/navbar') %>
+        </div>
+    </header>
+    <main>
+        <div class="container mt-3">
+            <% if (message_update) { %>
+                <div class="alert alert-success" role="alert">
+                    Update employee <%= message_update %>
+                </div>
+                <% } %>
+            <% if (message_delete) { %>
+                    <div class="alert alert-danger" role="alert">
+                        Delete employee <%= message_delete %>
+                    </div>
+                <% } %>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">name</th>
+                        <th scope="col">age</th>
+                        <th scope="col">country</th>
+                        <th scope="col">position</th>
+                        <th scope="col">wage</th>
+                        <th scope="col">action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% employees.forEach((employee, index)=> { %>
+                        <tr>
+                            <th scope="row">
+                                <%= index+1 %>
+                            </th>
+                            <td>
+                                <%= employee.name %>
+                            </td>
+                            <td>
+                                <%= employee.age %>
+                            </td>
+                            <td>
+                                <%= employee.country %>
+                            </td>
+                            <td>
+                                <%= employee.position %>
+                            </td>
+                            <td>
+                                <%= employee.wage %>
+                            </td>
+                            <td><a href="/employee/edit/<%= employee._id %> " class="btn btn-primary">Edit</a>
+                                <a href="/employee/delete/<%= employee._id %> " class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer>
+        <%- include('./partials/footer') %>
+    </footer>
+</body>
+
+</html>
