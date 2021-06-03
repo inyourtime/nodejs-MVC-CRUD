@@ -3,12 +3,10 @@ const router = express.Router()
 const employeeController = require('../controllers/employees')
 
 // Index Page
-router.get('/', (req,res) => res.render('index'))
+router.get('/', employeeController.homeView)
 
 // Create Page
-router.get('/employee/create', (req, res) => {
-    res.render('create', { message_create: false })
-})
+router.get('/employee/create', employeeController.createView)
 
 router.get('/employee/list', employeeController.listEmployee)
 

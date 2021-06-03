@@ -1,5 +1,13 @@
 const Employee = require('../models/employees')
 
+exports.homeView = (req, res) => {
+    res.render('index')
+}
+
+exports.createView = (req, res) => {
+    res.render('create', { message_create: false })
+}
+
 exports.createEmployee = async (req, res) => {
     try {
         const new_employee = new Employee(req.body)
